@@ -7,7 +7,7 @@ public class EqualUtils
 		return number1 == number2;
 	}
 
-	public static Boolean isGreater(int number1, int number2)
+	public static boolean isGreater(int number1, int number2)
 	{
 		return number1 > number2;
 	}
