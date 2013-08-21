@@ -33,31 +33,6 @@ public class BinarySearchDayOneTest
 	}
 
 	@Test
-	public void shouldReturnTrueWhenTwoNumbersAreEqual()
-	{
-		assertThat(binarySearchDayOne.isEqual(2, 2), is(true));
-	}
-
-	@Test
-	public void shouldReturnFalseWhenTwoNumbersAreNotEqual()
-	{
-		assertThat(binarySearchDayOne.isEqual(2, 3), is(false));
-
-	}
-
-	@Test
-	public void shouldReturnTrueWhenNumber1GreaterThanNumber2()
-	{
-		assertThat(binarySearchDayOne.isGreater(3, 2), is(true));
-	}
-
-	@Test
-	public void shouldReturnFalseWhenNumber1LessThanNumber2()
-	{
-		assertThat(binarySearchDayOne.isGreater(2, 3), is(false));
-	}
-
-	@Test
 	public void shouldReturnIndexWhenFind()
 	{
 		assertThat(binarySearchDayOne.chop(1, source), is(0));
