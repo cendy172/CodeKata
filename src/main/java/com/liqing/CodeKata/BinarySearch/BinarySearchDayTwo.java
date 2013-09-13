@@ -16,13 +16,22 @@ public class BinarySearchDayTwo
 
 	private int chop(int low, int high, int target)
 	{
+		return isBreak(low, high) ? -1 : getTargetIndex(low, high, target);
+	}
+
+	private boolean isBreak(int low, int high)
+	{
 		if (high < low)
 		{
-			return -1;
+			return true;
 		}
+		return false;
+	}
 
-		int midIndex = (low + high) / 2;
-		int mid = this.source.get(midIndex);
+	private int getTargetIndex(int low, int high, int target)
+	{
+		int midIndex = getMidIndex(low, high);
+		int mid = source.get(midIndex);
 
 		if (EqualUtils.isEqual(mid, target))
 		{
@@ -34,5 +43,10 @@ public class BinarySearchDayTwo
 		{
 			return chop(midIndex + 1, high, target);
 		}
+	}
+
+	private int getMidIndex(int low, int high)
+	{
+		return (low + high) / 2;
 	}
 }

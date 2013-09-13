@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * User: LiQing Date: 8/6/13 Time: 7:45 PM
- */
 public class BinarySearchDayOneTest
 {
 
