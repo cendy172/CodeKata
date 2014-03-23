@@ -1,4 +1,4 @@
-package com.liqing.CodeKata;
+package com.liqing.kata.binarysearch;
 
 public class EqualUtils
 {
