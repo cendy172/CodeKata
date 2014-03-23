@@ -1,8 +1,6 @@
-package com.liqing.CodeKata.BinarySearch;
+package com.liqing.kata.binarysearch;
 
 import java.util.List;
-
-import com.liqing.CodeKata.EqualUtils;
 
 public class BinarySearchDayOne
 {

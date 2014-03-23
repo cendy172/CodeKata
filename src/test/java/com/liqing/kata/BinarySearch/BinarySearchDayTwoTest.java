@@ -1,4 +1,4 @@
-package com.liqing.CodeKata.BinarySearch;
+package com.liqing.kata.binarysearch;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
