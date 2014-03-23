@@ -2,45 +2,39 @@ package com.liqing.kata.binarysearch;
 
 import java.util.ArrayList;
 
-public class BinarySearchDayTwo
-{
-	private ArrayList<Integer> source;
+import static com.liqing.kata.binarysearch.EqualUtils.isEqual;
+import static com.liqing.kata.binarysearch.EqualUtils.isGreater;
 
-	public int chop(int target, ArrayList<Integer> source)
-	{
-		this.source = source;
-		return chop(0, source.size() - 1, target);
-	}
+public class BinarySearchDayTwo {
+    private ArrayList<Integer> source;
 
-	private int chop(int low, int high, int target)
-	{
-		return isBreak(low, high) ? -1 : getTargetIndex(low, high, target);
-	}
+    public int chop(int target, ArrayList<Integer> source) {
+        this.source = source;
+        return chop(0, source.size() - 1, target);
+    }
 
-	private boolean isBreak(int low, int high)
-	{
+    private int chop(int low, int high, int target) {
+        return isBreak(low, high) ? -1 : getTargetIndex(low, high, target);
+    }
+
+    private boolean isBreak(int low, int high) {
         return high < low;
     }
 
-	private int getTargetIndex(int low, int high, int target)
-	{
-		int midIndex = getMidIndex(low, high);
-		int mid = source.get(midIndex);
+    private int getTargetIndex(int low, int high, int target) {
+        int midIndex = getMidIndex(low, high);
+        int mid = source.get(midIndex);
 
-		if (EqualUtils.isEqual(mid, target))
-		{
-			return midIndex;
-		} else if (EqualUtils.isGreater(mid, target))
-		{
-			return chop(low, midIndex - 1, target);
-		} else
-		{
-			return chop(midIndex + 1, high, target);
-		}
-	}
+        if (isEqual(mid, target)) {
+            return midIndex;
+        } else if (isGreater(mid, target)) {
+            return chop(low, midIndex - 1, target);
+        } else {
+            return chop(midIndex + 1, high, target);
+        }
+    }
 
-	private int getMidIndex(int low, int high)
-	{
-		return (low + high) / 2;
-	}
+    private int getMidIndex(int low, int high) {
+        return (low + high) / 2;
+    }
 }
