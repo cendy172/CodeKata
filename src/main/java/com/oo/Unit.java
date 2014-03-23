@@ -1,6 +1,10 @@
 package com.oo;
 
-public enum Unit {
-    Mile, Yard, Feet, Inch
+public enum Unit
+{
+	Mile,
+	Yard,
+	Feet,
+	Inch
 
 }
