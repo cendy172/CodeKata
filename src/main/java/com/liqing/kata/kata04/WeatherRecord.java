@@ -18,19 +18,9 @@ public class WeatherRecord
 		this.date = date;
 	}
 
-	public String getMaxT()
-	{
-		return String.valueOf(maxT);
-	}
-
 	public void setMaxT(String maxT)
 	{
 		this.maxT = convertStringToInteger(maxT);
-	}
-
-	public int getMinT()
-	{
-		return minT;
 	}
 
 	public void setMinT(String minT)
