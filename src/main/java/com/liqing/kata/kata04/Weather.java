@@ -29,18 +29,16 @@ public class Weather
 			e.printStackTrace();
 			return "";
 		}
-		return getSmallestSpread(weather);
+		return getSmallestSpread(getWeatherRecords(weather));
 	}
 
-	private String getSmallestSpread(String weather)
+	private String getSmallestSpread(String[] rows)
 	{
 		int minIndex = 0;
-		String[] rows = getWeatherRecords(weather);
-
 		for (int i = 2; i < rows.length; i++)
 		{
-			WeatherRecord weatherRecord = getWeatherRecord(rows[i]);
-
+			WeatherRecord weatherRecord = setRecords(rows[i]);
+			weatherRecords.add(weatherRecord);
 			if (weatherRecords.get(minIndex).getTemperatureSpread() > weatherRecord.getTemperatureSpread())
 			{
 				minIndex = i - 2;
@@ -49,7 +47,7 @@ public class Weather
 		return weatherRecords.get(minIndex).getDate();
 	}
 
-	private WeatherRecord getWeatherRecord(String row)
+	private WeatherRecord setRecords(String row)
 	{
 		String[] record = row.trim().split("\\s+");
 
@@ -57,7 +55,6 @@ public class Weather
 		weatherRecord.setDate(record[0]);
 		weatherRecord.setMaxT(record[1]);
 		weatherRecord.setMinT(record[2]);
-		weatherRecords.add(weatherRecord);
 		return weatherRecord;
 	}
 
