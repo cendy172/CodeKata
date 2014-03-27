@@ -29,7 +29,11 @@ public class Weather
 			e.printStackTrace();
 			return "";
 		}
+		return getSmallestSpread(weather);
+	}
 
+	private String getSmallestSpread(String weather)
+	{
 		int minIndex = 0;
 		String[] rows = getWeatherRecords(weather);
 
