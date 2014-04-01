@@ -1,5 +1,7 @@
 package com.liqing.kata.kata04;
 
+import static java.lang.Math.abs;
+
 public class WeatherRecord
 {
 
@@ -30,7 +32,7 @@ public class WeatherRecord
 
 	public int getTemperatureSpread()
 	{
-		return this.temperatureSpread == 0 ? maxT - minT : this.temperatureSpread;
+		return this.temperatureSpread == 0 ? abs(maxT - minT) : this.temperatureSpread;
 	}
 
 	private Integer convertStringToInteger(String temperature)
