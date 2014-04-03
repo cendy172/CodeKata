@@ -10,11 +10,11 @@ import org.apache.commons.io.IOUtils;
 public class Weather
 {
 
-	private List<WeatherRecord> weatherRecords;
+	private List<Record> records;
 
 	public Weather()
 	{
-		weatherRecords = new ArrayList<WeatherRecord>();
+		records = new ArrayList<Record>();
 	}
 
 	public String getSmallestTemperatureSpreadDate()
@@ -37,24 +37,24 @@ public class Weather
 		int minIndex = 0;
 		for (int i = 2; i < rows.length; i++)
 		{
-			WeatherRecord weatherRecord = setRecords(rows[i]);
-			weatherRecords.add(weatherRecord);
-			if (weatherRecords.get(minIndex).getTemperatureSpread() > weatherRecord.getTemperatureSpread())
+			Record record = setRecords(rows[i]);
+			records.add(record);
+			if (records.get(minIndex).getDifference() > record.getDifference())
 			{
 				minIndex = i - 2;
 			}
 		}
-		return weatherRecords.get(minIndex).getDate();
+		return records.get(minIndex).getId();
 	}
 
-	private WeatherRecord setRecords(String row)
+	private Record setRecords(String row)
 	{
 		String[] record = row.trim().split("\\s+");
 
-		WeatherRecord weatherRecord = new WeatherRecord();
-		weatherRecord.setDate(record[0]);
-		weatherRecord.setMaxT(record[1]);
-		weatherRecord.setMinT(record[2]);
+		Record weatherRecord = new Record();
+		weatherRecord.setId(record[0]);
+		weatherRecord.setFirst(record[1]);
+		weatherRecord.setSecond(record[2]);
 		return weatherRecord;
 	}
 
