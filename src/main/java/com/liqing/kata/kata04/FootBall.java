@@ -10,11 +10,11 @@ import java.util.List;
 public class FootBall
 {
 
-	private List<FootBallRecord> footBallRecords;
+	private List<Record> footBallRecords;
 
 	public FootBall()
 	{
-		footBallRecords = new ArrayList<FootBallRecord>();
+		footBallRecords = new ArrayList<Record>();
 	}
 
 	public String getSmallestDifferenceFAndATeamName()
@@ -41,24 +41,24 @@ public class FootBall
 			{
 				continue;
 			}
-			FootBallRecord footBallRecord = setRecords(rows[i]);
+			Record footBallRecord = setRecords(rows[i]);
 			footBallRecords.add(footBallRecord);
 			if (footBallRecords.get(minIndex).getDifference() > footBallRecord.getDifference())
 			{
 				minIndex = i - 2;
 			}
 		}
-		return footBallRecords.get(minIndex).getTeamName();
+		return footBallRecords.get(minIndex).getId();
 	}
 
-	private FootBallRecord setRecords(String row)
+	private Record setRecords(String row)
 	{
 		String[] record = row.trim().split("\\s+");
 
-		FootBallRecord footBallRecord = new FootBallRecord();
-		footBallRecord.setTeamName(record[1]);
-		footBallRecord.setScoredFor(record[6]);
-		footBallRecord.setAgainst(record[8]);
+		Record footBallRecord = new Record();
+		footBallRecord.setId(record[1]);
+		footBallRecord.setFirst(record[6]);
+		footBallRecord.setSecond(record[8]);
 		return footBallRecord;
 	}
 
