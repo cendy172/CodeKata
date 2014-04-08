@@ -1,9 +1,6 @@
 package com.liqing.kata.kata04;
 
-import org.apache.commons.io.IOUtils;
-
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,17 +16,17 @@ public class FootBall
 
 	public String getSmallestDifferenceFAndATeamName()
 	{
-		String weather;
+		String[] weather;
 		try
 		{
-			weather = getWeatherAsString("football.dat");
+			weather = new ReadFile().getRows("football.dat");
 
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 			return "";
 		}
-		return getSmallestDifference(getWeatherRecords(weather));
+		return getSmallestDifference(weather);
 	}
 
 	private String getSmallestDifference(String[] rows)
@@ -53,23 +50,13 @@ public class FootBall
 
 	private Record setRecords(String row)
 	{
-		String[] record = row.trim().split("\\s+");
+		String[] columns = row.trim().split("\\s+");
 
 		Record footBallRecord = new Record();
-		footBallRecord.setId(record[1]);
-		footBallRecord.setFirst(record[6]);
-		footBallRecord.setSecond(record[8]);
+		footBallRecord.setId(columns[1]);
+		footBallRecord.setFirst(columns[6]);
+		footBallRecord.setSecond(columns[8]);
 		return footBallRecord;
 	}
 
-	private String[] getWeatherRecords(String weather)
-	{
-		return weather.split("\n");
-	}
-
-	private String getWeatherAsString(String source) throws IOException
-	{
-		InputStream weatherData = getClass().getClassLoader().getResourceAsStream(source);
-		return IOUtils.toString(weatherData, "UTF-8");
-	}
 }
