@@ -1,11 +1,8 @@
 package com.liqing.kata.kata04;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.commons.io.IOUtils;
 
 public class Weather
 {
@@ -19,17 +16,17 @@ public class Weather
 
 	public String getSmallestTemperatureSpreadDate()
 	{
-		String weather;
+		String[] weather;
 		try
 		{
-			weather = getWeatherAsString("weather.dat");
+			weather = new ReadFile().getRows("weather.dat");
 
 		} catch (IOException e)
 		{
 			e.printStackTrace();
 			return "";
 		}
-		return getSmallestSpread(getWeatherRecords(weather));
+		return getSmallestSpread(weather);
 	}
 
 	private String getSmallestSpread(String[] rows)
@@ -56,16 +53,5 @@ public class Weather
 		weatherRecord.setFirst(record[1]);
 		weatherRecord.setSecond(record[2]);
 		return weatherRecord;
-	}
-
-	private String[] getWeatherRecords(String weather)
-	{
-		return weather.split("\n");
-	}
-
-	private String getWeatherAsString(String source) throws IOException
-	{
-		InputStream weatherData = getClass().getClassLoader().getResourceAsStream(source);
-		return IOUtils.toString(weatherData, "UTF-8");
 	}
 }
