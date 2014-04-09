@@ -7,11 +7,13 @@ import java.util.List;
 public class Weather
 {
 
+	private final ReadFile readFile;
 	private List<Record> records;
 
 	public Weather()
 	{
 		records = new ArrayList<Record>();
+		readFile = new ReadFile();
 	}
 
 	public String getSmallestTemperatureSpreadDate()
@@ -19,7 +21,7 @@ public class Weather
 		String[] weather;
 		try
 		{
-			weather = new ReadFile().getRows("weather.dat");
+			weather = readFile.getRows("weather.dat");
 
 		} catch (IOException e)
 		{
@@ -46,7 +48,7 @@ public class Weather
 
 	private Record setRecords(String row)
 	{
-		String[] record = row.trim().split("\\s+");
+		String[] record = readFile.splitRow(row);
 
 		Record weatherRecord = new Record();
 		weatherRecord.setId(record[0]);

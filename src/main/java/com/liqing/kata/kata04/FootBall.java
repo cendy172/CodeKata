@@ -7,11 +7,13 @@ import java.util.List;
 public class FootBall
 {
 
+	private final ReadFile readFile;
 	private List<Record> footBallRecords;
 
 	public FootBall()
 	{
 		footBallRecords = new ArrayList<Record>();
+		readFile = new ReadFile();
 	}
 
 	public String getSmallestDifferenceFAndATeamName()
@@ -19,7 +21,7 @@ public class FootBall
 		String[] weather;
 		try
 		{
-			weather = new ReadFile().getRows("football.dat");
+			weather = readFile.getRows("football.dat");
 
 		} catch (IOException e)
 		{
@@ -50,7 +52,7 @@ public class FootBall
 
 	private Record setRecords(String row)
 	{
-		String[] columns = row.trim().split("\\s+");
+		String[] columns = readFile.splitRow(row);
 
 		Record footBallRecord = new Record();
 		footBallRecord.setId(columns[1]);
