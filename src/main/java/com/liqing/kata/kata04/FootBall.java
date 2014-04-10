@@ -7,6 +7,10 @@ import java.util.List;
 public class FootBall
 {
 
+	public static final int ID_COLUMN = 1;
+	public static final int FIRST_COLUMN = 6;
+	public static final int SECOND_COLUMN = 8;
+	public static final String DIVIDING_LINE = "-------------------------------------------------------";
 	private final ReadFile readFile;
 	private List<Record> footBallRecords;
 
@@ -36,7 +40,7 @@ public class FootBall
 		int minIndex = 0;
 		for (int i = 1; i < rows.length; i++)
 		{
-			if (rows[i].trim().equals(""))
+			if (rows[i].trim().contains(DIVIDING_LINE))
 			{
 				continue;
 			}
@@ -53,7 +57,7 @@ public class FootBall
 	private Record setRecords(String row)
 	{
 		String[] cells = readFile.splitRow(row);
-		return new Record(cells[1], cells[6], cells[8]);
+		return new Record(cells[ID_COLUMN], cells[FIRST_COLUMN], cells[SECOND_COLUMN]);
 	}
 
 }
