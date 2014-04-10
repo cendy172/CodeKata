@@ -48,12 +48,7 @@ public class Weather
 
 	private Record setRecords(String row)
 	{
-		String[] record = readFile.splitRow(row);
-
-		Record weatherRecord = new Record();
-		weatherRecord.setId(record[0]);
-		weatherRecord.setFirst(record[1]);
-		weatherRecord.setSecond(record[2]);
-		return weatherRecord;
+		String[] cells = readFile.splitRow(row);
+		return new Record(cells[0], cells[1], cells[2]);
 	}
 }

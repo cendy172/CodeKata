@@ -52,13 +52,8 @@ public class FootBall
 
 	private Record setRecords(String row)
 	{
-		String[] columns = readFile.splitRow(row);
-
-		Record footBallRecord = new Record();
-		footBallRecord.setId(columns[1]);
-		footBallRecord.setFirst(columns[6]);
-		footBallRecord.setSecond(columns[8]);
-		return footBallRecord;
+		String[] cells = readFile.splitRow(row);
+		return new Record(cells[1], cells[6], cells[8]);
 	}
 
 }

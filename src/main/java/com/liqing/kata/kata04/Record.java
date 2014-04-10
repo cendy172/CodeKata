@@ -9,6 +9,13 @@ public class Record
 	private int first;
 	private int second;
 
+	public Record(String id, String first, String second)
+	{
+		this.id = id;
+		this.first = convertStringToInteger(first);
+		this.second = convertStringToInteger(second);
+	}
+
 	public String getId()
 	{
 		return id;
