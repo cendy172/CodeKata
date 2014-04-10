@@ -1,8 +1,6 @@
 package com.liqing.kata.kata04;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FootBall
 {
@@ -12,11 +10,11 @@ public class FootBall
 	public static final int SECOND_COLUMN = 8;
 	public static final String DIVIDING_LINE = "-------------------------------------------------------";
 	private final ReadFile readFile;
-	private List<Record> footBallRecords;
+	private Record smallestDiff;
 
 	public FootBall()
 	{
-		footBallRecords = new ArrayList<Record>();
+		smallestDiff = new Record("", "99", "0");
 		readFile = new ReadFile();
 	}
 
@@ -37,7 +35,6 @@ public class FootBall
 
 	private String getSmallestDifference(String[] rows)
 	{
-		int minIndex = 0;
 		for (int i = 1; i < rows.length; i++)
 		{
 			if (rows[i].trim().contains(DIVIDING_LINE))
@@ -45,13 +42,12 @@ public class FootBall
 				continue;
 			}
 			Record footBallRecord = setRecords(rows[i]);
-			footBallRecords.add(footBallRecord);
-			if (footBallRecords.get(minIndex).getSmallestDiff() > footBallRecord.getSmallestDiff())
+			if (footBallRecord.getSmallestDiff() < smallestDiff.getSmallestDiff())
 			{
-				minIndex = i - 2;
+				smallestDiff = footBallRecord;
 			}
 		}
-		return footBallRecords.get(minIndex).getId();
+		return smallestDiff.getId();
 	}
 
 	private Record setRecords(String row)

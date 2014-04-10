@@ -13,6 +13,6 @@ public class FootBallTest
 		FootBall footBall = new FootBall();
 		String teamName = footBall.getSmallestDifferenceFAndATeamName();
 
-		assertThat(teamName, is("Arsenal"));
+		assertThat(teamName, is("Liverpool"));
 	}
 }

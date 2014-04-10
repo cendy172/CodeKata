@@ -1,22 +1,20 @@
 package com.liqing.kata.kata04;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Weather
 {
 	public static final int ID_COLUMN = 0;
 	public static final int FIRST_COLUMN = 1;
 	public static final int SECOND_COLUMN = 2;
-	public static final CharSequence DIVIDING_LINE = " ";
+	public static final CharSequence DIVIDING_LINE = "";
 	private final ReadFile readFile;
-	private List<Record> records;
+	private Record smallestDiff;
 
 	public Weather()
 	{
-		records = new ArrayList<Record>();
 		readFile = new ReadFile();
+		smallestDiff = new Record("", "99", "0");
 	}
 
 	public String getSmallestTemperatureSpreadDate()
@@ -36,21 +34,19 @@ public class Weather
 
 	private String getSmallestSpread(String[] rows)
 	{
-		int minIndex = 0;
-		for (int i = 2; i < rows.length; i++)
+		for (int i = 1; i < rows.length; i++)
 		{
 			if (rows[i].trim().equals(DIVIDING_LINE))
 			{
 				continue;
 			}
 			Record record = setRecords(rows[i]);
-			records.add(record);
-			if (records.get(minIndex).getSmallestDiff() > record.getSmallestDiff())
+			if (record.getSmallestDiff() < smallestDiff.getSmallestDiff())
 			{
-				minIndex = i - 2;
+				smallestDiff = record;
 			}
 		}
-		return records.get(minIndex).getId();
+		return smallestDiff.getId();
 	}
 
 	private Record setRecords(String row)

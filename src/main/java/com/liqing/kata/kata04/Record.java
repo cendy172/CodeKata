@@ -6,12 +6,12 @@ public class Record
 {
 
 	private String id;
-    private int smallestDiff;
+	private int smallestDiff;
 
 	public Record(String id, String first, String second)
 	{
 		this.id = id;
-        smallestDiff = getDifference(convertStringToInteger(first), convertStringToInteger(second));
+		smallestDiff = getDifference(convertStringToInteger(first), convertStringToInteger(second));
 	}
 
 	public String getId()
@@ -19,13 +19,14 @@ public class Record
 		return id;
 	}
 
-    public int getSmallestDiff() {
-        return smallestDiff;
-    }
-
-	private int getDifference(int first1, int second1)
+	public int getSmallestDiff()
 	{
-		return abs(first1 - second1);
+		return smallestDiff;
+	}
+
+	private int getDifference(int first, int second)
+	{
+		return abs(first - second);
 	}
 
 	private Integer convertStringToInteger(String temperature)
