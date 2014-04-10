@@ -21,21 +21,6 @@ public class Record
 		return id;
 	}
 
-	public void setId(String id)
-	{
-		this.id = id;
-	}
-
-	public void setFirst(String first)
-	{
-		this.first = convertStringToInteger(first);
-	}
-
-	public void setSecond(String second)
-	{
-		this.second = convertStringToInteger(second);
-	}
-
 	public int getDifference()
 	{
 		return abs(first - second);
