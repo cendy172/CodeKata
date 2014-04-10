@@ -46,7 +46,7 @@ public class FootBall
 			}
 			Record footBallRecord = setRecords(rows[i]);
 			footBallRecords.add(footBallRecord);
-			if (footBallRecords.get(minIndex).getDifference() > footBallRecord.getDifference())
+			if (footBallRecords.get(minIndex).getSmallestDiff() > footBallRecord.getSmallestDiff())
 			{
 				minIndex = i - 2;
 			}

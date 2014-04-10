@@ -9,8 +9,8 @@ public class Weather
 	public static final int ID_COLUMN = 0;
 	public static final int FIRST_COLUMN = 1;
 	public static final int SECOND_COLUMN = 2;
-    public static final CharSequence DIVIDING_LINE = " ";
-    private final ReadFile readFile;
+	public static final CharSequence DIVIDING_LINE = " ";
+	private final ReadFile readFile;
 	private List<Record> records;
 
 	public Weather()
@@ -39,13 +39,13 @@ public class Weather
 		int minIndex = 0;
 		for (int i = 2; i < rows.length; i++)
 		{
-            if (rows[i].trim().equals(DIVIDING_LINE))
-            {
-                continue;
-            }
+			if (rows[i].trim().equals(DIVIDING_LINE))
+			{
+				continue;
+			}
 			Record record = setRecords(rows[i]);
 			records.add(record);
-			if (records.get(minIndex).getDifference() > record.getDifference())
+			if (records.get(minIndex).getSmallestDiff() > record.getSmallestDiff())
 			{
 				minIndex = i - 2;
 			}
