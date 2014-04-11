@@ -11,7 +11,7 @@ public class FootBallTest
 	public void shouldGetTheNameOfSmallestDifferenceBetweenFAndA()
 	{
 		FootBall footBall = new FootBall();
-		String teamName = footBall.getSmallestDifferenceFAndATeamName();
+		String teamName = footBall.getSmallestDifferenceId();
 
 		assertThat(teamName, is("Liverpool"));
 	}

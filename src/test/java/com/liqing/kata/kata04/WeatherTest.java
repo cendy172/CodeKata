@@ -20,7 +20,7 @@ public class WeatherTest
 	@Test
 	public void shouldGetTheSmallestTemperatureSpreadDateSuccessfully()
 	{
-		String date = weather.getSmallestTemperatureSpreadDate();
+		String date = weather.getSmallestDifferenceId();
 
 		assertThat(date, is("2"));
 	}
