@@ -1,4 +1,4 @@
-package com.liqing.kata.kata5;
+package com.liqing.kata.kata05;
 
 import java.io.IOException;
 import java.io.InputStream;

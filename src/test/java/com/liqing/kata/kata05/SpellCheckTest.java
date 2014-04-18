@@ -1,4 +1,4 @@
-package com.liqing.kata.kata5;
+package com.liqing.kata.kata05;
 
 import org.junit.Before;
 import org.junit.Test;
