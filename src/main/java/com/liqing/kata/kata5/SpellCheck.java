@@ -1,14 +1,13 @@
 package com.liqing.kata.kata5;
 
-import org.apache.commons.io.IOUtils;
-import sun.plugin2.message.Message;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+
+import org.apache.commons.io.IOUtils;
 
 public class SpellCheck
 {
@@ -19,7 +18,7 @@ public class SpellCheck
 		dictionary = new HashMap<String, String>();
 		try
 		{
-			InputStream wordListStream = SpellCheck.class.getResourceAsStream("wordlist.txt");
+			InputStream wordListStream = SpellCheck.class.getClassLoader().getResourceAsStream("wordlist.txt");
 			String wordList = IOUtils.toString(wordListStream);
 			String[] words = wordList.trim().split("\n");
 			for (String word : words)
@@ -39,7 +38,8 @@ public class SpellCheck
 
 	public boolean checkSpell(String target)
 	{
-		return dictionary.containsKey(md5(target)) && dictionary.get(md5(target)).equals(target);
+		String key = md5(target);
+		return dictionary.containsKey(key) && dictionary.get(key).equals(target);
 	}
 
 	private static String md5(String source)
