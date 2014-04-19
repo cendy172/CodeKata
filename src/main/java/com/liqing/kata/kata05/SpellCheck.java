@@ -32,16 +32,6 @@ public class SpellCheck
 		}
 	}
 
-	public SpellCheck()
-	{
-	}
-
-	public boolean checkSpell(String target)
-	{
-		String key = md5(target);
-		return dictionary.containsKey(key) && dictionary.get(key).equals(target);
-	}
-
 	private static String md5(String source)
 	{
 		try
@@ -54,5 +44,11 @@ public class SpellCheck
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	public boolean checkSpell(String target)
+	{
+		String key = md5(target);
+		return dictionary.containsKey(key) && dictionary.get(key).equals(target);
 	}
 }
