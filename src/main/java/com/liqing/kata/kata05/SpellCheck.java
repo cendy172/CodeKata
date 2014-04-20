@@ -16,6 +16,14 @@ public class SpellCheck
 	static
 	{
 		dictionary = new HashMap<String, String>();
+
+		try
+		{
+			md5 = MessageDigest.getInstance("MD5");
+		} catch (NoSuchAlgorithmException e)
+		{
+			e.printStackTrace();
+		}
 		try
 		{
 			InputStream wordListStream = SpellCheck.class.getClassLoader().getResourceAsStream("wordlist.txt");
@@ -32,18 +40,13 @@ public class SpellCheck
 		}
 	}
 
+	private static MessageDigest md5;
+
 	private static String md5(String source)
 	{
-		try
-		{
-			byte[] digest = MessageDigest.getInstance("MD5").digest(source.getBytes());
-			BigInteger bigInteger = new BigInteger(1, digest);
-			return bigInteger.toString(16);
-		} catch (NoSuchAlgorithmException e)
-		{
-			e.printStackTrace();
-		}
-		return null;
+		byte[] digest = md5.digest(source.getBytes());
+		BigInteger bigInteger = new BigInteger(1, digest);
+		return bigInteger.toString(16);
 	}
 
 	public boolean checkSpell(String target)
