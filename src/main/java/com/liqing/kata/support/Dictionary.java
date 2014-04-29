@@ -34,7 +34,7 @@ public class Dictionary
 			String[] words = wordList.trim().split("\n");
 			for (String word : words)
 			{
-				String wordTrimmed = word.trim();
+				String wordTrimmed = word.trim().toLowerCase();
 				dictionary.put(md5(wordTrimmed), wordTrimmed);
 			}
 		} catch (IOException e)
@@ -49,8 +49,9 @@ public class Dictionary
 
 	public static boolean isInDictionary(String target)
 	{
-		String key = md5(target);
-		return dictionary.containsKey(key) && dictionary.get(key).equals(target);
+		String lowerCase = target.trim().toLowerCase();
+		String key = md5(lowerCase);
+		return dictionary.containsKey(key) && dictionary.get(key).equals(lowerCase);
 	}
 
 	private static String md5(String source)

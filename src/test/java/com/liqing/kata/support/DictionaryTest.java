@@ -16,6 +16,12 @@ public class DictionaryTest
 	}
 
 	@Test
+	public void shouldInDictionaryWhenUpperCase()
+	{
+		assertThat(isInDictionary("A"), is(true));
+	}
+
+	@Test
 	public void shouldNotInDictionary()
 	{
 		assertThat(isInDictionary(""), is(false));
