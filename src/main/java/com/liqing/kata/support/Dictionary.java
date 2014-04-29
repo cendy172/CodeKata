@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 public class Dictionary
 {
-	public static HashMap<String, String> dictionary;
+	public static final HashMap<String, String> dictionary;
 
 	private static MessageDigest md5;
 
@@ -41,10 +41,6 @@ public class Dictionary
 		{
 			e.printStackTrace();
 		}
-	}
-
-	public Dictionary()
-	{
 	}
 
 	public static boolean isInDictionary(String target)

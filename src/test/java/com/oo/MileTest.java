@@ -1,21 +1,13 @@
 package com.oo;
 
+import org.junit.Test;
+
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-
 public class MileTest
 {
-
-	@Before
-	public void setUp()
-	{
-
-	}
 
 	@Test
 	public void shouldBeEqualWhenLengthAreSame()
@@ -35,9 +27,4 @@ public class MileTest
 		assertThat(mile1, not(mile2));
 	}
 
-	@After
-	public void tearDown()
-	{
-
-	}
 }

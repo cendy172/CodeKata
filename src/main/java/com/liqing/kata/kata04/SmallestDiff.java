@@ -7,8 +7,8 @@ public abstract class SmallestDiff
 	private static final String DIVIDING_LINE = "-------------------------------------------------------";
 	private static final String BLANK = "";
 	private Record smallestDiff;
-	private ReadFile readFile;
-	private String fileName;
+	private final ReadFile readFile;
+	private final String fileName;
 
 	public SmallestDiff(String fileName)
 	{

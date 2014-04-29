@@ -2,8 +2,8 @@ package com.liqing.kata.kata08;
 
 public class Component
 {
-	private String first;
-	private String second;
+	private final String first;
+	private final String second;
 
 	public Component(String first, String second)
 	{
@@ -33,11 +33,9 @@ public class Component
 
 		if (!first.equals(component.first))
 			return false;
-		if (!second.equals(component.second))
-			return false;
+        return second.equals(component.second);
 
-		return true;
-	}
+    }
 
 	@Override
 	public int hashCode()

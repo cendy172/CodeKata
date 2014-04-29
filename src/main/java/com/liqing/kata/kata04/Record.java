@@ -5,8 +5,8 @@ import static java.lang.Math.abs;
 public class Record
 {
 
-	private String id;
-	private int smallestDiff;
+	private final String id;
+	private final int smallestDiff;
 
 	public Record(String id, String first, String second)
 	{

@@ -1,7 +1,5 @@
 package com.oo;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -10,12 +8,6 @@ import static org.junit.Assert.assertThat;
 
 public class InchTest
 {
-
-	@Before
-	public void setUp()
-	{
-
-	}
 
 	@Test
 	public void shouldBeEqualWhenLengthAreSame()
@@ -53,9 +45,4 @@ public class InchTest
 		assertThat(feet, not(inch));
 	}
 
-	@After
-	public void tearDown()
-	{
-
-	}
 }
