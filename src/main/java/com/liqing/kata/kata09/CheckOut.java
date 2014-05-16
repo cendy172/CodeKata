@@ -12,18 +12,26 @@ public class CheckOut {
     }
 
     public int price(String itemsString) {
-        int total = 0;
         initItems(itemsString);
+        return calculateTotal();
+    }
+
+    private int calculateTotal() {
+        int total = 0;
         for (GoodType item : items.keySet()) {
-            Goods goods = priceRule.getGoods(item);
-            if (goods.hasSpecialPrice()) {
-                total += (items.get(item) / goods.getSpecialNum()) * goods.getSpecialPrice();
-                total += (items.get(item) % goods.getSpecialNum()) * goods.getPrice();
-            } else {
-                total += goods.getPrice();
-            }
+            total += calculateItem(item, priceRule.getGoods(item));
         }
         return total;
+    }
+
+    private int calculateItem(GoodType item, Goods goods) {
+        if (goods.hasSpecialPrice()) {
+            int itemTotal = (items.get(item) / goods.getSpecialNum()) * goods.getSpecialPrice();
+            itemTotal += (items.get(item) % goods.getSpecialNum()) * goods.getPrice();
+            return itemTotal;
+        } else {
+            return goods.getPrice();
+        }
     }
 
     private void initItems(String itemsString) {
