@@ -33,4 +33,17 @@ public class CheckOutTest {
         assertThat(checkOut.price("CDBA"), is(115));
         assertThat(checkOut.price("AA"), is(100));
     }
+
+    @Test
+    public void shouldGetPriceWithSpecialPrice() {
+        assertThat(checkOut.price("AAA"), is(130));
+        assertThat(checkOut.price("AAAA"), is(180));
+        assertThat(checkOut.price("AAAAA"), is(230));
+        assertThat(checkOut.price("AAAAAA"), is(260));
+
+        assertThat(checkOut.price("AAAB"), is(160));
+        assertThat(checkOut.price("AAABB"), is(175));
+        assertThat(checkOut.price("AAABBD"), is(190));
+        assertThat(checkOut.price("DABABA"), is(190));
+    }
 }
