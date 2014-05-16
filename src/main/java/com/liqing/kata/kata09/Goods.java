@@ -2,7 +2,7 @@ package com.liqing.kata.kata09;
 
 public class Goods {
 
-    public static int NA = 0;
+    private static int NA = 0;
 
     private GoodType name;
     private int price;
@@ -24,31 +24,19 @@ public class Goods {
         return name;
     }
 
-    public void setName(GoodType name) {
-        this.name = name;
-    }
-
     public int getPrice() {
         return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
     }
 
     public int getSpecialNum() {
         return specialNum;
     }
 
-    public void setSpecialNum(int specialNum) {
-        this.specialNum = specialNum;
-    }
-
     public int getSpecialPrice() {
         return specialPrice;
     }
 
-    public void setSpecialPrice(int specialPrice) {
-        this.specialPrice = specialPrice;
+    public boolean hasSpecialPrice() {
+        return this.specialNum != NA;
     }
 }
