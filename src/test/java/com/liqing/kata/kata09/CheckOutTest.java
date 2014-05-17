@@ -22,7 +22,6 @@ public class CheckOutTest {
         priceRule.addGoods(new Goods(C, 20));
         priceRule.addGoods(new Goods(D, 15));
         checkOut = new CheckOut(priceRule);
-
     }
 
     @Test
@@ -45,5 +44,36 @@ public class CheckOutTest {
         assertThat(checkOut.price("AAABB"), is(175));
         assertThat(checkOut.price("AAABBD"), is(190));
         assertThat(checkOut.price("DABABA"), is(190));
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void shouldGetTotalFromScanWhenEmpty() {
+        checkOut.scan("");
+    }
+
+    @Test
+    public void shouldGetTotalFromScanWhenWithoutSpecialPrice() {
+        checkOut.scan("C");
+        checkOut.scan("D");
+        checkOut.scan("B");
+        checkOut.scan("A");
+
+        int total = checkOut.total();
+
+        assertThat(total, is(115));
+    }
+
+    @Test
+    public void shouldGetTotalFromScanWhenWithSpecialPrice() {
+        checkOut.scan("D");
+        checkOut.scan("A");
+        checkOut.scan("B");
+        checkOut.scan("A");
+        checkOut.scan("B");
+        checkOut.scan("A");
+
+        int total = checkOut.total();
+
+        assertThat(total, is(190));
     }
 }

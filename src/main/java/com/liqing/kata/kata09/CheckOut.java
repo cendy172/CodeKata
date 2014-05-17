@@ -9,11 +9,30 @@ public class CheckOut {
 
     public CheckOut(PriceRule priceRule) {
         this.priceRule = priceRule;
+        items = new HashMap<GoodType, Integer>();
     }
 
     public int price(String itemsString) {
-        initItems(itemsString);
+        try {
+            initItems(itemsString);
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException();
+        }
         return calculateTotal();
+    }
+
+    public void scan(String item) {
+        try {
+            addItem(GoodType.valueOf(item));
+        } catch (IllegalArgumentException e) {
+            throw new RuntimeException();
+        }
+    }
+
+    public int total() {
+        int total = calculateTotal();
+        items.clear();
+        return total;
     }
 
     private int calculateTotal() {
@@ -35,15 +54,19 @@ public class CheckOut {
     }
 
     private void initItems(String itemsString) {
-        items = new HashMap<GoodType, Integer>();
+        items.clear();
         for (char item : itemsString.toCharArray()) {
             GoodType goodType = GoodType.valueOf(String.valueOf(item));
-            Integer integer = items.get(goodType);
-            if (integer == null) {
-                items.put(goodType, 1);
-            } else {
-                items.put(goodType, integer + 1);
-            }
+            addItem(goodType);
+        }
+    }
+
+    private void addItem(GoodType goodType) {
+        Integer integer = items.get(goodType);
+        if (integer == null) {
+            items.put(goodType, 1);
+        } else {
+            items.put(goodType, integer + 1);
         }
     }
 }
