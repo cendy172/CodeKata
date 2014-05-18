@@ -13,11 +13,7 @@ public class CheckOut {
     }
 
     public int price(String itemsString) {
-        try {
-            initItems(itemsString);
-        } catch (IllegalArgumentException e) {
-            throw new RuntimeException();
-        }
+        initItems(itemsString);
         return calculateTotal();
     }
 
