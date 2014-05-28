@@ -55,8 +55,4 @@ public class SortingBallTest {
         assertThat(balls.get(1), is(20));
         assertThat(balls.get(2), is(30));
     }
-
-
-
-
 }

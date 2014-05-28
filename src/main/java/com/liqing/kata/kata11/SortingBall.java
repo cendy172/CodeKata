@@ -1,8 +1,9 @@
 package com.liqing.kata.kata11;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+
+import static java.util.Collections.sort;
 
 public class SortingBall {
 
@@ -21,7 +22,7 @@ public class SortingBall {
     }
 
     public List<Integer> balls() {
-        Collections.sort(balls);
+        sort(balls);
         return balls;
     }
 }
